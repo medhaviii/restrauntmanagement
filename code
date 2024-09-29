@@ -1,0 +1,982 @@
+#include <stdio.h>
+#include <string.h>
+float disc=0;
+struct feed
+{
+int service;
+int frend;
+int quality;
+int ambience;
+int vfm;
+int clean;
+int comfort;
+}fed;
+long long int num[10] = {9205331826, 9650099522, 9210974876,
+9958663185}; // %lld
+int menu[100][3] = {
+{0, 0, 0}, {1, 50, 0}, {2, 50, 0}, {3, 50, 0}, {4, 50, 0}, {5, 50, 0},
+{6, 50, 0}, {7, 50, 0}, {8, 50, 0}, {9, 50, 0}, {10, 50, 0},
+{11, 70, 0}, {12, 70, 0}, {13, 70, 0}, {14, 70, 0}, {15, 70, 0}, {16,
+70, 0}, {17, 70, 0}, {18, 70, 0},
+{19, 100, 0}, {20, 100, 0}, {21, 100, 0}, {22, 100, 0}, {23, 100,
+0}, {24, 100, 0},
+{25, 150, 0}, {26, 150, 0}, {27, 150, 0}, {28, 150, 0}, {29, 150,
+0},
+{30, 120, 0}, {31, 120, 0}, {32, 120, 0}, {33, 120, 0},
+
+{34, 180, 0}, {35, 180, 0}, {36, 180, 0}, {37, 180, 0}, {38, 180,
+0}, {39, 180, 0}, {40, 180, 0}, {41, 180, 0},
+{42, 40, 0}, {43, 40, 0}, {44, 40, 0}, {45, 40, 0}, {46, 40, 0}, {47,
+40, 0},
+{48, 100, 0}, {49, 100, 0}, {50, 100, 0}, {51, 100, 0}, {52, 100,
+0}, {53, 100, 0}, {54, 100, 0}, {55, 100, 0}, {56, 100, 0},
+{57, 100, 0}, {58, 100, 0}, {59, 100, 0}, {60, 100, 0}, {61, 100,
+0}};
+
+int coupno[4] = {10,20,30,40};
+long long int phone_number;
+float kidsmeal()
+{
+int kidam,z;
+char child;
+printf("\ndo you have a kid under the age of seven(Y/N)");
+getchar();
+scanf("%c"
+
+, &child);
+for (int j = 57; j <= 61; j++)
+{
+kidam = menu[j][1] * menu[j][2];
+}
+if (child == 'Y')
+{
+float z = kidam * (0.20);
+//kidam = kidam - z;
+return z;
+}
+
+return 0;
+
+}
+void menuOrder()
+{
+char ch;
+int c = 1;
+while (c == 1)
+{
+printMenu();
+printf("\nWhat do you wanna eat: ");
+scanf(" %c"
+, &ch);
+
+switch (ch)
+{
+case 'a':
+{
+beverages();
+break;
+}
+case 'b':
+{
+starters();
+break;
+}
+case 'c':
+{
+pasta();
+break;
+
+}
+case 'd':
+{
+pizza();
+break;
+}
+case 'e':
+{
+chinese();
+break;
+}
+case 'f':
+{
+mainc();
+break;
+}
+case 'g':
+{
+breads();
+break;
+}
+case'h':
+{
+dessert();
+break;
+}
+case'i':
+{
+
+kmeal();
+break;
+}
+case 'n':
+{
+c=0;
+printf("Thanks for placing your order!!!!");
+printf("\nOrder will be prepared in 20-30 mins");
+printf("\nSo sit back,relax and wait for your amazing
+
+order!!!!");
+break;
+}
+}
+}
+}
+
+void printMenu()
+{
+printf("\nMENU:\n\n");
+printf("Choose what you wanna order:\n");
+printf("a-BEVERAGES\n");
+printf("b-STARTERS\n");
+printf("c-PASTA\n");
+printf("d-PIZZA\n");
+printf("e-CHINESE\n");
+printf("f-MAIN COURSE\n");
+printf("g-BREADS\n");
+printf("h-DESSERTS\n");
+
+printf("i-KIDSMEAL\n");
+printf("n-Move to the next step\n");
+}
+
+void beverages()
+{
+printf("\nBEVERAGES\n\n");
+printf("1-Virgin Mojito rs50\n");
+printf("2-Lime soda rs50\n");
+printf("3-Berry cooler rs50\n");
+printf("4-Green Apple Mojito rs50\n");
+printf("5-Ice Tea rs50\n");
+printf("6-Flavored Ice tea rs50\n");
+printf("7-Tea rs50\n");
+printf("8-Cold Coffee rs50\n");
+printf("9-Hot Coffee rs50\n");
+printf("10-Cold drink rs50\n");
+int bev;
+printf("\nWhat you wanna order(enter no):");
+scanf("%d"
+
+, &bev);
+for (int i = 1; i <= 10; i++)
+{
+if (bev == menu[i][0])
+{
+menu[i][2] += 1;
+}
+}
+}
+
+void starters()
+{
+printf("\nSTARTERS\n\n");
+printf("11-Paneer tikka rs70\n");
+printf("12-Momos rs70\n");
+printf("13-Spring roll rs70\n");
+printf("14-Loaded nachos rs70\n");
+printf("15-French fries rs70\n");
+printf("16-Dahi kabab rs70\n");
+printf("17-Chilli Potato rs70\n");
+printf("18-Chripy corn rs70\n");
+int sta;
+printf("\nWhat you wanna order(enter no):");
+scanf("%d"
+
+, &sta);
+
+for (int i = 11; i <= 18; i++)
+{
+if (sta == menu[i][0])
+{
+menu[i][2] += 1;
+}
+}
+}
+
+void pasta()
+{
+printf("\nPASTA\n\n");
+printf("19-Penne Alfredo rs100\n");
+
+printf("20-Penne Arabiata rs100\n");
+printf("21-Penne Pink rs100\n");
+printf("22-Spaghetti Alfredo rs100\n");
+printf("23-Spaghetti Arabiata rs100\n");
+printf("24-Spaghetti Pink rs100\n");
+int pas;
+printf("\nWhat you wanna order(enter no):");
+scanf("%d"
+
+, &pas);
+
+for (int i = 19; i <= 24; i++)
+{
+if (pas == menu[i][0])
+{
+menu[i][2] += 1;
+}
+}
+}
+
+void pizza()
+{
+printf("\nPIZZA\n\n");
+printf("25-MARGHERITA rs150\n");
+printf("26-VEGGIE PIZZA rs 150\n");
+printf("27-PANEER TIKKA PIZZA rs 150\n");
+printf("28-PERI PERI PIZZA rs 150\n");
+printf("29-FOUR CHEESE PIZZA rs 150\n");
+int piz;
+printf("\nWhat you wanna order(enter no):");
+scanf("%d"
+
+, &piz);
+
+for (int i = 25; i <= 29; i++)
+{
+if (piz == menu[i][0])
+{
+menu[i][2] += 1;
+}
+}
+}
+
+void chinese()
+{
+printf("\nCHINESE\n\n");
+printf("30-VEG HAKKA NOODLES rs120\n");
+printf("31-CHILL GARLIC NOODLES rs120\n");
+printf("32-VEG MANCHURIAN rs120\n");
+printf("33-CHILLI PANEER rs120\n");
+int chi;
+printf("\nWhat you wanna order(enter no):");
+scanf("%d"
+
+, &chi);
+
+for (int i = 30; i <= 33; i++)
+{
+if (chi == menu[i][0])
+{
+menu[i][2] += 1;
+}
+}
+}
+
+void mainc()
+{
+printf("\nMAIN COURSE\n\n");
+printf("34-MIX VEG rs180\n");
+printf("35-PANEER LABRADAR rs180\n");
+printf("36-SHAHI PANEER rs180\n");
+printf("37-DAL MAKHANI rs180\n");
+printf("38-DAL TADKA rs180\n");
+printf("39-MALAI KOFTA rs180\n");
+printf("40-SEV TAMATAR rs180\n");
+printf("41-BHINDI MASALA rs180\n");
+int main;
+printf("\nWhat you wanna order(enter no)");
+scanf("%d"
+
+, &main);
+for (int i = 34; i <= 41; i++)
+{
+if (main == menu[i][0])
+{
+menu[i][2] += 1;
+}
+}
+}
+
+void breads()
+{
+printf("BREAD\n\n");
+printf("42-TANDOORI ROTI rs40\n");
+printf("43-NAAN rs40\n");
+
+printf("44-GARLIC NAAN rs40\n");
+printf("45-LACHA PARANTHA rs40\n");
+printf("46-BUTTER ROTI rs40\n");
+printf("47-STUFFED NAAN rs40\n");
+int bre;
+printf("\nWhat you wanna order(enter no)");
+scanf("%d"
+
+, &bre);
+
+for (int i = 42; i <= 47; i++)
+{
+if (bre == menu[i][0])
+{
+menu[i][2] += 1;
+}
+}
+}
+
+void dessert()
+{
+printf("DESERT\n\n");
+printf("48-GULAB JAMUN rs 100\n");
+printf("49-GULAR JAMUN WITH ICE CREAM rs 100\n");
+printf("50-CHOCOLAVA rs 100\n");
+printf("51-BROWNIE WITH ICE CREAM rs 100\n");
+printf("52-BLUE BERRY CHEESE CAKE rs 100\n");
+printf("53-TIRAMISU rs 100\n");
+printf("54-ICECREAM(CHOCOLATE) rs 100\n");
+printf("55-ICECREAM(VANILLA) rs 100\n");
+printf("56-ICECREAM(STRAWBERRY) rs 100\n");
+
+int des;
+printf("\nWhat you wanna order(enter no)");
+scanf("%d"
+
+, &des);
+
+for (int i = 48; i <= 56; i++)
+{
+if (des == menu[i][0])
+{
+menu[i][2] += 1;
+}
+}
+}
+
+void kmeal()
+{
+int chm;
+
+printf("KIDS SNACKS:\n\n");
+printf("57-Fries rs 100\n");
+printf("58-Cheese stix rs 100\n");
+printf("59-Grilled sandwich rs 100\n");
+printf("60-Pancakes rs 100\n");
+printf("61-Waffle rs 100\n");
+printf("\nWhat you wanna order(enter no)");
+scanf("%d"
+
+, &chm);
+for (int i = 57; i <= 61; i++)
+{
+if (chm == menu[i][0])
+{
+
+menu[i][2] += 1;
+}
+}
+}
+float firstc()
+{
+float z;
+for (int i = 0; i < 4; i++)
+{
+if (phone_number != num[i])
+{
+z = bill();
+float x = z * (0.10);
+//z = z - x;
+return x;
+}
+
+}
+return 0;
+}
+float coup()
+{
+char co;
+int conm;
+int b;
+float bd;
+printf("\nDo you have a coupon(Y/N)");
+
+getchar();
+scanf("%c"
+,&co);
+if (co == 'Y')
+{
+printf("Enter coupon name:");
+scanf("%d"
+
+, &conm);
+for (int i = 0; i < 4; i++)
+{
+if (conm == coupno[i])
+{
+b = bill();
+bd = b * (0.15);
+//b = b - bd;
+return bd;
+}
+}
+
+}
+return 0;
+}
+
+float fibill()
+{
+float fbill;
+fbill = bill() - disc;
+return fbill;
+}
+
+float gst()
+{
+float g;
+g = fibill() * 0.12;
+return g;
+}
+float service()
+{
+float serv;
+serv = fibill() * 0.1;
+return serv;
+}
+void billp()
+{
+
+disc=kidsmeal()+firstc()+coup();
+float x = fibill() + service() + gst();
+printf("SDF KA DHABA\n\n");
+printf("final bill=%d\n"
+
+, bill());
+
+printf("final bill after %0.2f discount=%0.2f\n"
+
+, disc, fibill());
+
+printf("GST=%0.2f\n"
+
+, gst());
+printf("service charge=%0.2f\n"
+
+, service());
+printf("Amount to be paid=%0.2f\n"
+, x);
+
+printf("THANK YOU FOR VISITING US :)\n");
+}
+
+int bill()
+{
+int bill = 0;
+for (int i = 1; i <= 61; i++)
+{
+bill += menu[i][1] * menu[i][2];
+}
+return bill;
+}
+void customer()
+{
+char name[100], email[100];
+long long int phone_number;
+int num_children;
+printf("\nName: ");
+scanf("%s"
+
+, &name);
+printf("\nPhone Number: ");
+scanf("%lld"
+
+, &phone_number);
+
+printf("\nEmail ID: ");
+scanf("%s"
+
+, &email);
+
+printf("\n\nNOW YOU CAN ORDER");
+menuOrder();
+}
+void feedback()
+{
+printf("\nThank you for ordering!!!!!");
+printf("\nPLS GIVE UR FEEDBACK!!!!");
+printf("\nPLS RATE US(ENTER NO FROM 1 TO 5)\n");
+
+printf("SERVICE:");
+scanf("%d"
+
+,&fed.service);
+printf("\nStaff Friendliness:");
+scanf("%d"
+
+,&fed.frend);
+printf("\nQuality");
+scanf("%d"
+
+,&fed.quality);
+printf("\nAmbience");
+scanf("%d"
+
+,&fed.ambience);
+printf("\nValue for money:");
+scanf("%d"
+
+,&fed.vfm);
+printf("\nCleanliness");
+scanf("%d"
+
+,&fed.clean);
+printf("\nComfort:");
+scanf("%d"
+
+,&fed.comfort);
+
+}
+void rating()
+{
+float rate;
+float
+x=fed.service+fed.frend+fed.quality+fed.ambience+fed.vfm+fed.cle
+an+fed.comfort;
+rate=x/7;
+printf("\n\nAs per you our rating was:%0.2f\n\n"
+,rate);
+
+printf("\n\nTHANK YOU SOO MUCH FOR RATING SDF KA
+DHABA!!!!!!!!!!\n");
+printf("HOPE YOU VISIT US AGAIN!!\n\n\nWILL BE
+LOOKING FORWARD TO IT!!\n");
+}
+
+int MAX=200;
+int l=11;
+struct Empdetail
+{
+char name[92];
+int empid;
+char post[20];
+long long int empphone;
+int attendence;
+int salary;
+
+}a[20];
+
+void display(struct Empdetail *a) {
+int i;
+for (i = 0; i < l; i++) {
+printf("\nEmployee Details\n");
+printf("Employee ID: %d\n"
+
+, a[i].empid);
+
+printf("Name: %s\n"
+
+, a[i].name);
+
+printf("Employee Phone Number: %d\n"
+
+, a[i].empphone);
+
+printf("Attendence: %d\n"
+
+, a[i].attendence);
+
+printf("Post: %s\n"
+
+, a[i].post);
+
+printf("Salary: %d\n"
+
+, a[i].salary);
+
+}
+}
+
+void insert(struct Empdetail *a) {
+int i, id;
+printf("Enter the employee ID: ");
+scanf("%d"
+, &id);
+if (l == MAX)
+{
+printf("The employee list is full. \nPlease delete an employee
+first.\n");
+return;
+}
+for (i = 0; i < l; i++)
+{
+if (a[i].empid == id)
+{
+printf("Employee with ID %d already exists.\n"
+, id);
+
+return;
+}
+}
+a[l].empid=id;
+printf("Name: ");
+scanf("%s"
+
+, a[l].name);
+
+printf("Employee Phone Number: ");
+scanf("%d"
+
+, &a[l].empphone);
+
+printf("Post: ");
+scanf("%s"
+
+, a[l].post);
+printf("Salary: ");
+scanf("%d"
+
+, &a[l].salary);
+
+l=l+1;
+
+}
+
+void delete1(struct Empdetail *a) {
+int id, i;
+printf("Enter the employee ID: ");
+scanf("%d"
+, &id);
+for (i = 0; i < l; i++) {
+if (a[i].empid == id) {
+for (int j = i; j < l-1 ; j++) {
+a[j] = a[j + 1];
+}
+//a[11].empid = 0;
+break;
+}
+}
+l=l-1;
+}
+
+void attendance(struct Empdetail *a)
+{
+int choice;
+printf("Press 1 to mark attendance or any other key to go back: ");
+scanf("%d"
+
+, &choice);
+if (choice == 1)
+{
+int id;
+
+printf("Enter the employee ID: ");
+scanf("%d"
+, &id);
+for (int i = 0; i < l; i++)
+{
+if (a[i].empid == id)
+{
+a[i].attendence += 1;
+break;
+}
+}
+}
+}
+
+void checkAttendance(struct Empdetail *a) {
+int i;
+printf("Attendance for today:\n");
+for (i = 0; i < l; i++)
+{
+if (a[i].attendence == 1) {
+printf("Employee ID: %d\n"
+
+, a[i].empid);
+
+printf("Name: %s\n"
+
+, a[i].name);
+
+}
+}
+}
+
+void staffdetail(struct Empdetail *a) {
+
+int id;
+printf("Enter the employee ID: ");
+scanf("%d"
+, &id);
+for (int i = 0; i < l; i++) {
+if (a[i].empid == id) {
+printf("Employee Details\n");
+printf("Name: %s\n"
+
+, a[i].name);
+
+printf("Employee Phone Number: %d\n"
+
+, a[i].empphone);
+
+printf("Attendence: %d\n"
+
+, a[i].attendence);
+
+printf("Post: %s\n"
+
+, a[i].post);
+
+printf("Salary: %d\n"
+
+, a[i].salary);
+
+break;
+}
+}
+}
+
+void staff()
+{
+strcpy(a[0].name,
+
+"Khushi");
+
+a[0].empid = 1;
+a[0].empphone = 78383;
+a[0].attendence = 0;
+strcpy(a[0].post,
+
+"Manager");
+
+a[0].salary = 120;
+
+strcpy(a[1].name,
+
+"Medhavi");
+
+a[1].empid = 2;
+
+a[1].empphone = 59884;
+a[1].attendence = 0;
+strcpy(a[1].post,
+
+"Manager");
+
+a[1].salary = 120;
+
+strcpy(a[2].name,
+
+"Kaira");
+
+a[2].empid = 3;
+a[2].empphone = 58383;
+a[2].attendence = 0;
+strcpy(a[2].post,
+
+"Manager");
+
+a[2].salary = 120;
+
+strcpy(a[3].name,
+
+"vaishnavi");
+
+a[3].empid = 4;
+a[3].empphone = 59884;
+a[3].attendence = 0;
+strcpy(a[3].post,
+
+"Manager");
+
+a[3].salary = 120;
+
+strcpy(a[4].name,
+
+"shashank");
+
+a[4].empid = 5;
+a[4].empphone = 78272;
+a[4].attendence = 0;
+strcpy(a[4].post,
+
+"chief");
+
+a[4].salary = 120;
+
+strcpy(a[5].name,
+
+"ayush");
+
+a[5].empid = 6;
+a[5].empphone = 33671;
+a[5].attendence = 0;
+strcpy(a[5].post,
+
+"chief");
+
+a[5].salary = 120;
+
+strcpy(a[6].name,
+
+"yash");
+
+a[6].empid = 7;
+a[6].empphone = 72828;
+a[6].attendence = 0;
+strcpy(a[6].post,
+
+"waiter");
+
+a[6].salary = 120;
+
+strcpy(a[7].name,
+
+"bhola");
+
+a[7].empid = 8;
+a[7].empphone = 28299;
+a[7].attendence = 0;
+strcpy(a[7].post,
+
+"waiter");
+
+a[7].salary = 120;
+
+strcpy(a[8].name,
+
+"pari");
+
+a[8].empid = 9;
+
+a[8].empphone = 839838;
+a[8].attendence = 0;
+strcpy(a[8].post,
+
+"waiter");
+
+a[8].salary = 120;
+
+strcpy(a[9].name,
+
+"reet");
+
+a[9].empid = 10;
+a[9].empphone = 28282;
+a[9].attendence = 0;
+strcpy(a[9].post,
+
+"waiter");
+
+a[9].salary = 120;
+
+strcpy(a[10].name,
+
+"mahi");
+
+a[10].empid = 11;
+a[10].empphone = 63673;
+a[10].attendence = 0;
+strcpy(a[10].post,
+
+"receptionit");
+
+int choice;
+int id[] = {1,2,3,4};
+char pa[][50] = {"abc"
+,
+"def"
+,
+"ghi"
+,
+"jkl"};
+
+int Sid;
+char pd[50];
+
+printf("Enter ID :");
+scanf("%d"
+
+, &Sid);
+
+int c = 1;
+for (int i = 0; i < 4; i++)
+{
+if (id[i] == Sid)
+{
+printf("Enter Password:");
+scanf("%s"
+, pd);
+
+if (strcmp(pa[i], pd) == 0)
+{
+printf("Correct password.\n Now you are IN:");
+c = 0;
+}
+}
+}
+if (c==0)
+{
+while (1)
+{
+printf("\n\n1.Insert\n2.Delete\n3.Attendance\n4.Check
+Attendance\n5.Staff Details\n6.Display All\n7.Exit\n");
+printf("Enter your choice: ");
+scanf("%d"
+
+, &choice);
+
+switch (choice)
+{
+case 1:
+insert(a);
+break;
+case 2:
+
+delete1(a);
+break;
+case 3:
+attendance(a);
+break;
+case 4:
+checkAttendance(a);
+break;
+case 5:
+staffdetail(a);
+break;
+case 6:
+display(a);
+break;
+case 7:
+exit(0);
+default:
+printf("Invalid choice. Please try again.\n");
+}
+}
+}
+else
+{
+printf("Wrong input");
+}
+return 0;
+}
+
+int main()
+{
+int t;
+printf("WELCOME TO #*#SDF KA DHABA#*#\n\n");
+printf("Customer (0)/ Staff (1): ");
+scanf("%d"
+, &t);
+
+if (t==0)
+{
+customer();
+billp();
+feedback();
+rating();
+}
+else if (t==1){
+staff();
+}
+else{
+printf("Invalid Input!\n");
+}
+return 0;
+}
